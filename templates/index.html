@@ -1,0 +1,181 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %}Inicio{% endblock  %}
+
+
+{% block 'content' %}
+    <h1 class="cabecero">Clinica de Fisioterápia CIRCE</h1>
+    
+    {% if messages %}
+        <div class="alert-messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <div class="centrado-grid">
+        <img loading="lazy" class="imagenes" src="../static/media/imagenes/clinica.webp" alt="fachada del centro">
+
+        <div class="lista">
+            <h3 class="cabecero">CIRCE: Cuidando tu bienestar desde 2010</h3>
+            <ul >
+                <li>
+                    <p>Desde nuestra apertura en enero de 2010, nos hemos consolidado como un referente en fisioterapia rehabilitación y podología en la Sierra de Madrid. En nuestra clínica, ubicada en ColladoVillalba en el corazón de la sierra, ofrecemos un servicio integral y personalizado que combina las técnicas más avanzadas con un trato cercano y profesional. Nuestro equipo de especialistas trabaja con dedicación para aliviar el dolor, mejorar la movilidad y promover una recuperación plena de nuestros pacientes, adaptando cada tratamiento a sus necesidades individuales.</p>
+                </li>
+                <li>
+                    <p> Con más de una década de experiencia, nos enorgullece ser un centro de confianza para la comunidad local, comprometido con la salud y el bienestar de cada persona que nos visita. Ya sea por lesiones deportivas, problemas posturales o necesidades de rehabilitación, en nuestra clínica encontrarás el apoyo que necesitas para mejorar tu calidad de vida.</p>  
+                </li>
+            </ul>    
+        </div> 
+
+        <div class="img-relleno">      
+            <img loading="lazy" class="img1 img-tm " src="../static/media/imagenes/recepcion.webp" alt="recepción">
+            <img loading="lazy" class="img2 img-tm " src="../static/media/imagenes/fachada.webp" alt="fachada del centro"> 
+        </div>
+    </div> 
+    
+    <hr>
+
+    <h3 class="cabecero">Nuestros Tratamientos</h3>
+    <div class="centrado-row">
+        
+        <div class="container-img">
+            <div>
+                <h4>Fisioterapia</h4>
+                <a href="{% url 'tratamientos' %}#fisioterapia" ><img loading="lazy" class="imagenes-link" src="../static/media/imagenes/box-blanco.webp" alt="fachada del centro"></a>  
+                <p>
+                    Tratamientos personalizados <span class="negrita">de 1 hora</span>...
+                </p> <p>Clic en la imagen para más información.</p>              
+            </div>
+
+            <div>
+                <h4>Diagnostico</h4>
+                <a href="{% url 'tratamientos' %}#diagnostico" ><img loading="lazy" class="imagenes-link" src="../static/media/imagenes/diagnostico.webp" alt="instrumentos diagnostico"></a>  
+                <p>
+                    Contamos con <span class="negrita">fluoroscopio y ecógrafo</span>...
+                </p><p>Clic en la imagen para más información.</p>                
+            </div>
+
+            <div>
+                <h4>Rehabilitación</h4>
+                <a href="{% url 'tratamientos' %}#rehabilitacion" ><img loading="lazy" class="imagenes-link" src="../static/media/imagenes/gym2.webp" alt="gimnasio"></a>  
+                <p>Gimnasio <span class="negrita">especializado para la rehabilitación</span>...</p><p>Clic en la imagen para más información.</p>                 
+            </div>
+
+            <div>
+                <h4>Pilates</h4>
+                <a href="{% url 'tratamientos' %}#rehabilitacion" ><img loading="lazy" class="imagenes-link" src="../static/media/imagenes/pilates2.webp" alt="sala Pilates"></a>   
+                <p>Pilates rehabilitación, <span class="negrita">grupos reducidos</span>...</p> 
+                <p>Clic en la imagen para más información.</p>               
+            </div>
+
+
+            <div>
+                <h4>Podologia</h4>
+                <a href="{% url 'tratamientos' %}#podologia" ><img loading="lazy" class="imagenes-link" src="../static/media/imagenes/podo.webp" alt="box de podología"></a>   
+                <p>Servicio de Podología <span class="negrita">desde quiropodias hasta cirugías podológicas</span>... 
+                </p><p>Clic en la imagen para más información.</p>               
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3 class="cabecero">Nuestro Centro</h3>
+    <div class="centrado-row">
+
+        <img loading="lazy" class="img-tm imagenes img-relleno" src="../static/media/imagenes/tratamiento.gif" alt="tratamiento">
+
+        <div class="carrusel-index">
+            <div id="carrusel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    {% for imagen in imagenes %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="2000">
+                            <img src="{{ imagen.photo.url }}" class="d-block w-100" alt="{{ imagen.name }}">
+
+                        </div>
+                    {% endfor %}
+
+                    <a class="carousel-control-prev" href="#carrusel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carrusel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <img loading="lazy" class="img-tm imagenes img-relleno" src="../static/media/imagenes/fluoroscopio.gif" alt="fluoroscopio"> 
+    </div>
+
+
+    <hr>
+    
+    <h3 class="cabecero">Nuestras Colaboraciones</h3>
+
+    <div class="centrado-row">     
+            <div class='centrado'>
+                <h4>Club Baloncesto C.Villalba</h4>
+                <div class='centrado-colab'>
+                    <a href="https://www.instagram.com/ubvillalba/?hl=es" class="logo-colab"><img loading="lazy" class="logo-colab" src="../static/media/imagenes/baloncesto.webp" alt="logo club baloncesto"></a>
+                    <p>
+                        En nuestra clínica de fisioterapia, estamos orgullosos de ser patrocinadores oficiales del Club de Baloncesto Villalba, encargándonos de la fisioterapia y rehabilitación de sus jugadores. Trabajamos para garantizar una óptima recuperación y prevenir lesiones, ayudando al equipo a rendir al máximo en cada temporada.</p>
+                    
+                </div>
+            </div>
+
+            <div class='centrado'>
+                <h4>Club Voleibol C.Villalba</h4>
+                <div class='centrado-colab'>                   
+                    <a href="https://voleibolcolladovil.wixsite.com/cvc-villalba" class="logo-colab"><img loading="lazy" class="logo-colab" src="../static/media/imagenes/voleibol.webp" alt="logo club voleibol"></a>
+                    <p>Tambien orgullososde ser patrocinadores del Club de Voleibol Villalba, brindando servicios especializados de fisioterapia y rehabilitación a sus jugadores. Nuestro objetivo es asegurar una recuperación rápida y efectiva, así como prevenir lesiones, para que el equipo pueda alcanzar su máximo rendimiento en cada partido.</p>
+                </div>
+            </div> 
+    </div> 
+
+    <div class='centrado'>
+        <h4>Universidad Europea de Madrid</h4>
+        <div class='centrado-row'>
+            <img loading="lazy" class="logo-colab" src="../static/media/imagenes/universidadeuropea-logo.png" alt="logo universidad">
+            <p>Nuestra clínica de fisioterapia cuenta con más de 10 años de experiencia como centro de prácticas de la Universidad Europea de Madrid, colaborando en la formación de futuros fisioterapeutas. Este compromiso con la educación y la excelencia nos permite estar siempre a la vanguardia de los tratamientos y ofrecer una atención de alta calidad a nuestros pacientes.</p>
+            
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="centrado"> 
+
+        <h2 class="cabecero">Siguenos en redes sociales</h2>  
+        <p class="centrado">Si quieres enterarte de nuestras últimas novedades siguenos</p>
+    
+        <div class="iconos-redes">  
+               
+            <a class="icono" href=" https://www.instagram.com/circe_fisioterapiaypodologia">
+                <span class="fa-brands fa-instagram"></span>
+            </a>
+
+            <a class="icono" href="https://www.facebook.com/CirceFisio/">
+                <span class="fa-brands fa-square-facebook"></span>
+            </a>
+
+            <a class="icono" href="https://x.com/circefisio?lang=es">
+                <span class="fa-brands fa-x-twitter"></span>
+            </a>
+
+        </div>
+    </div>
+
+    {% block 'scripts' %}
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% endblock  %}
+
+{% endblock  %}

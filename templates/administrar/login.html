@@ -1,0 +1,19 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %}Login{% endblock  %}
+
+{% block 'content' %}
+    
+    <form class="centrado-form" method="post">
+        {% csrf_token %}
+        <div class="btn aux-btn-form">
+
+            <table class="tabla-form">{{form.as_table}}</table>
+            <button class="btn btn-detail" type="submit" value="Enviar" class="btn btn-detail" >Login</button>
+        </div>
+
+    </form>
+  
+
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends "layout/base.html" %}
+{% load static %}
+
+{% block 'title' %}Administar{% endblock  %}
+
+{% block 'content' %}
+
+    {% if user.is_authenticated %}
+
+     
+            <div class="centrado">
+                <h2>Hola {{ user.username }} </h2>
+            </div>
+
+            <div class="centrado">
+
+                <h3>***¿Que deseas modificar?***</h3>
+            </div>
+
+            <div class="centrado-row">
+                <a class="btn btn-detail"href="{% url "equipo" %}">NUESTRO EQUIPO</a>
+                <a class="btn btn-detail" href="{% url "galeria" %}">GALERIA</a>
+            </div>
+        
+    {% else %}
+        <meta http-equiv="refresh" content="0; url={% url "index" %}" />
+    {% endif %}
+
+{% endblock  %}

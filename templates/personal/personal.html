@@ -1,0 +1,229 @@
+{% extends "layout/base.html" %}
+{% load static %}
+
+
+{% block 'title' %}Personal{% endblock  %}
+
+{% block 'styles' %}<link rel="stylesheet" href="{% static 'css/personal.css' %}">{% endblock  %}
+
+{% block 'content' %}
+    <h1 class="cabecero">NUESTRO EQUIPO</h1>
+    <div class="centrado">
+        <p>En nuestra clínica, nos enorgullece contar con un equipo multidisciplinar de profesionales altamente cualificados dedicados a brindar una atención integral y personalizada a cada uno de nuestros pacientes. Somos especialistas en fisioterapia, podología, rehabilitación, psicología, ofreciendo un enfoque completo para mejorar la salud y el bienestar de quienes confían en nosotros.</p>
+        <h3 class="cabecero">Estos somos nosotros:</h3>
+    </div>
+    <h4 class="cabecero">Los fundadores</h4>
+    <div class="centrado-cards">
+        <div class="cards">
+            
+            {% for persona in personal %}
+                {% if persona.especialidades == 'socio' %}
+                <div class="centrado">
+                    
+                    <div class="card">
+                        <div>
+                            <h3 class="card-name"> {{persona.name}}, {{persona.last_name}} </h3>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <img src="{{persona.photo.url}}" class="card-img" alt="fotografia">
+                        </div>
+
+                        <div>
+                            <p class="card-text"> {{persona.description}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                {% endif %}
+
+                           
+            {% endfor %}
+
+        </div>
+        
+    </div>
+    <hr>  
+
+    <h4 class="cabecero">Los Fisioterapeutas</h4>
+    <div class="centrado-cards">
+        <div class="cards">
+            
+            {% for persona in personal %}
+                {% if persona.especialidades == 'fisioterapeuta' %}
+                <div class="centrado">
+                    
+                    <div class="card">
+                        <div>
+                            <h3 class="card-name"> {{persona.name}}, {{persona.last_name}} </h3>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <img src="{{persona.photo.url}}" class="card-img" alt="fotografia">
+                        </div>
+
+                        <div>
+                            <p class="card-text"> {{persona.description}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                {% endif %}
+
+                           
+            {% endfor %}
+
+        </div>
+        
+    </div>
+    
+    <hr>  
+
+    <h4 class="cabecero">Los Rehabilitadores</h4>
+    <div class="centrado-cards">
+        <div class="cards">
+            
+            {% for persona in personal %}
+                {% if persona.especialidades == 'rehabilitador' %}
+                <div class="centrado">
+                    
+                    <div class="card">
+                        <div>
+                            <h3 class="card-name"> {{persona.name}}, {{persona.last_name}} </h3>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <img src="{{persona.photo.url}}" class="card-img" alt="fotografia">
+                        </div>
+
+                        <div>
+                            <p class="card-text"> {{persona.description}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                {% endif %}
+
+                           
+            {% endfor %}
+
+        </div>
+        
+    </div>
+
+    <hr>  
+
+    <h4 class="cabecero">Psicóloga</h4>
+    <div class="centrado-cards">
+        <div class="cards">
+            
+            {% for persona in personal %}
+                {% if persona.especialidades == 'psicologo' %}
+                <div class="centrado">
+                    
+                    <div class="card">
+                        <div>
+                            <h3 class="card-name"> {{persona.name}}, {{persona.last_name}} </h3>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <img src="{{persona.photo.url}}" class="card-img" alt="fotografia">
+                        </div>
+
+                        <div>
+                            <p class="card-text"> {{persona.description}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                {% endif %}
+
+                           
+            {% endfor %}
+
+        </div>
+        
+    </div>
+    <hr>  
+
+    <h4 class="cabecero">Monitores de Pilates</h4>
+    <div class="centrado-cards">
+        <div class="cards">
+            
+            {% for persona in personal %}
+                {% if persona.especialidades == 'pilates' %}
+                <div class="centrado">
+                    
+                    <div class="card">
+                        <div>
+                            <h3 class="card-name"> {{persona.name}}, {{persona.last_name}} </h3>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <img src="{{persona.photo.url}}" class="card-img" alt="fotografia">
+                        </div>
+
+                        <div>
+                            <p class="card-text"> {{persona.description}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                {% endif %}
+
+                           
+            {% endfor %}
+
+        </div>   
+    </div>
+    <hr>
+    <h4 class="cabecero">Los Podólogos</h4>
+    <div class="centrado-cards">
+        <div class="cards">
+            
+            {% for persona in personal %}
+                {% if persona.especialidades == 'podologos' %}
+                <div class="centrado">
+                    
+                    <div class="card">
+                        <div>
+                            <h3 class="card-name"> {{persona.name}}, {{persona.last_name}} </h3>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <img src="{{persona.photo.url}}" class="card-img" alt="fotografia">
+                        </div>
+
+                        <div>
+                            <p class="card-text"> {{persona.description}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+                {% endif %}
+
+                           
+            {% endfor %}
+
+        </div>   
+    </div>
+
+{% endblock  %}

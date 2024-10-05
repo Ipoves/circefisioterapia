@@ -1,0 +1,76 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %}Contacto{% endblock  %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+{% block 'content' %}
+    
+    <div class="centrado">
+        <h1 class="cabecero">CONTACTA CON NOSOTROS</h1>
+        
+        <ul class="lista">
+            <li><h3>Puedes Ponerte en contacto con nosotros en los teléfonos:</h3></li>
+            <li>91 855 97 27</li>
+            <li>688 92 62 23</li>
+            <li><h3>O en el correo electrónico:</h3></li>
+            <li>circe.fisioterapia@gmail.com</li>
+        </ul>
+
+        <hr class="separar">
+
+        <h3>O si lo prefieres, rellena el siguiente formulario y nos pondremos en contacto contigo.</h3>
+
+        {% if messages %}
+            <div class="alert-messages">
+                {% for message in messages %}
+                    <div id="message-box" class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <form class="centrado-form" action="" method="POST">
+            {% csrf_token %}
+            <div class="btn aux-btn-form">
+                <table class="tabla-form">{{miFormulario.as_table}}</table>
+                <div class="check-formulario centrado-row">
+                    <label for="terminos">
+                        <input type="checkbox" id="terminos" name="terminos" required>
+                        He leído y acepto las 
+                        <a href="{% url 'aviso' %}"> condiciones legales y de privacidad  </a>  
+                        
+                    </label>
+                    
+                    
+                </div>
+                
+                <input class="btn btn-detail" type="submit" value=" Enviar ">
+            </div>
+
+        </form>
+      
+    </div>
+
+
+        
+{% endblock  %}
+
+{% block 'scripts' %}
+    <script>
+
+        // Espera 3 segundos antes de desaparecer el mensaje y redirigir
+        setTimeout(function() {
+            // Ocultar el mensaje
+            var messageBox = document.getElementById('message-box');
+            if (messageBox) {
+                messageBox.style.display = 'none';
+                window.location.href = "{% url 'index' %}";
+            }
+
+        }, 3000);  // 3000 ms = 3 segundos
+    </script>
+{% endblock  %}
+

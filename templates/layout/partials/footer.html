@@ -1,0 +1,54 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+
+<footer>
+    
+<div class="gral">
+    				
+    <div class="centrado-footer">
+        <h2 class="texto">Contacto</h2>	
+        <div class="lista texto">
+            <ul>
+                <li>
+                    <span class="texto">918 559 727</span>
+                </li>
+                <li>
+                    <span class="texto">688 92 62 23</span>
+                </li>
+                <li>
+                    <span class="texto">Circe.fisioterapia@gmail.com</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="centrado-footer">
+        <h2 class="texto">Horario</h2>
+        <span class="texto">Lunes a Viernes: 9.30 - 13:30 / 16.00 - 21.00</span>       
+    </div>
+
+    <div class="centrado-footer">
+
+            <iframe class="mapa" loading="lazy"
+                    src="https://maps.google.com/maps?q=C.%20Juntera%2C%206%2C%2028400%20Collado%20Villalba%2C%20Madrid&#038;t=m&#038;z=14&#038;output=embed&#038;iwloc=near"
+                    title="C. Juntera, 6, 28400 Collado Villalba, Madrid"
+                    aria-label="C. Juntera, 6, 28400 Collado Villalba, Madrid">
+            </iframe>
+            
+            <div>
+                <span class="texto">C. Juntera, 6, 28400 Collado Villalba, Madrid</span>
+            </div>
+        
+
+    </div>
+</div>
+<div class="gral"> 
+    <span>
+        <a class="texto centrado" href="{% url 'aviso' %}"> Condiciones legales y de privacidad.  </a>
+        <p class="texto">© 2024 Circe Fisioterapia. Todos los derechos reservados.</p>
+    </span>
+    
+</div>
+    
+</footer>

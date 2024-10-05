@@ -1,0 +1,87 @@
+{% extends "layout/base.html" %}
+{% load static %}
+
+{% block 'title' %}Administar{% endblock  %}
+{% block 'styles' %}<link rel="stylesheet" href="{% static 'css/personal.css' %}">{% endblock  %}
+{% block 'content' %}
+    {% if user.is_authenticated %}
+        <h1>NUESTRO EQUIPO</h1>
+
+        <span class="btn aux-btn-form centrado-row">
+            <a class="btn btn-detail" href="{% url "administrar" %}">Volver</a>
+            <a class="btn btn-detail" href="{% url "administrar_create" %}">Añadir Personal</a>
+        </span>
+
+        {% if messages %}
+            <div class="alert-messages">
+                {% for message in messages %}
+                    <div id="message-box" class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="cards">
+            {% for persona in personal %}
+        
+                <div class="card">
+                    <div>
+                        <h3 class="card-name"> {{persona.name}}, {{persona.last_name}} </h3>
+                    </div>
+
+                    <hr></hr>
+
+                    <div>
+                        <img src="{{persona.photo.url}}" class="card-img" alt="fotografia">
+                    </div>
+
+                    <div>
+                        <p class="card-text"> {{persona.description}}</p>
+                        <p class="card-name"> {{persona.especialidades}}</p>
+                    </div>
+
+                    <span class="card-text">
+                        <a href=" {% url "administrar_edit" id=persona.id %} " class="btn btn-edit">Editar</a>   
+                        <form method="post" action="{% url 'administrar_delete' persona.id %}" onsubmit="return confirmarEliminacion()">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-delete">Eliminar</button>
+                        </form>
+                    </span>
+                    
+                </div>
+                
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <meta http-equiv="refresh" content="0; url={% url "index" %}" />
+    {% endif %}
+
+    {% block 'scripts' %}
+        <script type="text/javascript">
+            function confirmarEliminacion() {
+                return confirm('¿Estás seguro de que deseas eliminar este elemento? Esta acción no se puede deshacer.');
+            }
+        </script>
+
+
+        <script>
+
+            // Espera 3 segundos antes de desaparecer el mensaje y redirigir
+            setTimeout(function() {
+                // Ocultar el mensaje
+                var messageBox = document.getElementById('message-box');
+                if (messageBox) {
+                    messageBox.style.display = 'none';
+                    window.location.reload();
+                }
+
+            }, 3000);  // 3000 ms = 3 segundos
+        </script>
+
+    {% endblock  %}
+
+{% endblock  %}
+
+

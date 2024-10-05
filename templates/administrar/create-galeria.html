@@ -1,0 +1,35 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %}Añadir Foto{% endblock  %}
+
+{% block 'styles' %}
+
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+{% endblock  %}
+
+{% block 'content' %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="alert-success"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <span class="btn aux-btn-form"><a class="btn btn-detail" href="{% url "galeria" %}">Volver</a></span>
+
+    <form class="centrado-form" action=" {% url "administrar_create-galeria" %}" method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="tabla-form">
+            {{ form.as_table }}
+        </table>
+        <div class="btn-wrapper">
+            <input type="submit" value="Enviar" class="btn btn-send" />
+        </div>
+        
+    </form>
+
+{% endblock  %}

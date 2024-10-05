@@ -1,0 +1,77 @@
+{% extends "layout/base.html" %}
+{% load static %}
+
+{% block 'title' %}Administar{% endblock  %}
+
+{% block 'content' %}
+    {% if user.is_authenticated %}
+        <h1>GALERIA</h1>
+
+        <span class="btn aux-btn-form centrado-row">
+            <a class="btn btn-detail" href="{% url "administrar" %}">Volver</a>
+            <a class="btn btn-detail" href="{% url "administrar_create-galeria" %}">Añadir Fotos</a>
+        </span>    
+        
+        {% if messages %}
+            <div class="alert-messages">
+                {% for message in messages %}
+                    <div id="message-box" class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}  
+
+        <div class="galeria">
+
+            {% for imagen in imagenes %}
+
+                <div class="galeria-contenedor">
+                    <div>            
+                        <img src="{{ imagen.photo.url }}" class="galeria-img" alt="{{ imagen.name }}">
+                        <h5 class="galeria-text">{{ imagen.name }}</h5> 
+                    </div>
+
+                    <span >
+                        <a href=" {% url "administrar_edit-galeria" id=imagen.id %} " class="btn btn-edit galeria-btn">Editar</a>   
+                        <form method="post" action="{% url 'administrar_delete-galeria' imagen.id %}" onsubmit="return confirmarEliminacion()">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-delete">Eliminar</button>
+                        </form>
+                    </span>               
+                </div>
+
+            {% endfor %}
+        </div>
+
+
+
+
+    {% else %}
+        <meta http-equiv="refresh" content="0; url={% url "index" %}" />
+    {% endif %}
+
+    {% block scripts %}
+        <script type="text/javascript">
+            function confirmarEliminacion() {
+                return confirm('¿Estás seguro de que deseas eliminar este elemento? Esta acción no se puede deshacer.');
+            }
+        </script>
+
+        <script>
+
+            // Espera 3 segundos antes de desaparecer el mensaje y redirigir
+            setTimeout(function() {
+                // Ocultar el mensaje
+                var messageBox = document.getElementById('message-box');
+                if (messageBox) {
+                    messageBox.style.display = 'none';
+                    window.location.reload();
+                }
+
+            }, 3000);  // 3000 ms = 3 segundos
+        </script>
+
+    {% endblock  %}
+
+{% endblock  %}

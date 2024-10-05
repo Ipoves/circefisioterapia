@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+<header class="header">
+    <div class="contenido-header">
+        <div class="contenedor-titulo">
+            <h1 class="stroke">CIRCE FISIOTERAPIA</h1>
+        </div>       
+    </div>
+    
+    <div class="menu">
+        {% include "layout/partials/menu.html" %}
+    </div>
+
+</header>

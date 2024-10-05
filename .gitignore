@@ -1,0 +1,40 @@
+# Sistema de archivos
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+# Archivos de configuración
+*.env
+.env
+*.DS_Store
+
+# Entorno virtual
+venv/
+env/
+.venv/
+
+# Archivos de Django
+/static/
+/media/
+/migrations/
+
+# Entornos virtuales
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Bases de datos SQLite
+*.sqlite3
+
+# Archivos de migración de Django
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Configuraciones de IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

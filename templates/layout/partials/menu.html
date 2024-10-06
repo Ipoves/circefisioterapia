@@ -1,15 +1,15 @@
-<nav class="menu">
+<nav id="menu" class="menu">
     <div class="hamburger" id="hamburger">&#9776;</div>
     <a href="{% url 'index' %}"><img class="logo" loading="lazy"  src="../static/media/imagenes/logo-header.gif" alt="logotipo"></a>                  
     
     <ul class="nav-links" id="nav-links">
-        <li><a class="etiqueta {% if request.path == '/' %}active{% endif %}"  href="{% url 'index' %}">Inicio</a></li>
-        <li><a class="etiqueta {% if request.path == '/personal' %}active{% endif %}"  href="{% url 'personal' %}">Quienes Somos</a></li>
-        <li><a class="etiqueta {% if request.path == '/galery' %}active{% endif %}"  href="{% url 'galery' %}">Galeria</a></li>
-        <li><a class="etiqueta {% if request.path == '/tratamientos' %}active{% endif %}"  href="{% url 'tratamientos' %}">Tratamientos</a></li>
-        <li><a class="etiqueta {% if request.path == '/contacto' %}active{% endif %}"  href="{% url 'contacto' %}">Contacto</a></li>
+        <li><a id="etiqueta" class="etiqueta {% if request.path == '/' %}active{% endif %}"  href="{% url 'index' %}">Inicio</a></li>
+        <li><a id="etiqueta1" class="etiqueta {% if request.path == '/personal' %}active{% endif %}"  href="{% url 'personal' %}">Quienes Somos</a></li>
+        <li><a id="etiqueta2" class="etiqueta {% if request.path == '/galery' %}active{% endif %}"  href="{% url 'galery' %}">Galeria</a></li>
+        <li><a id="etiqueta3" class="etiqueta {% if request.path == '/tratamientos' %}active{% endif %}"  href="{% url 'tratamientos' %}">Tratamientos</a></li>
+        <li><a id="etiqueta4" class="etiqueta {% if request.path == '/contacto' %}active{% endif %}"  href="{% url 'contacto' %}">Contacto</a></li>
         {% if user.is_authenticated %}
-            <li><a class="etiqueta admin " href="{% url "administrar" %}">Administrar</a></li>
+            <li><a id="etiqueta5" class="etiqueta admin " href="{% url "administrar" %}">Administrar</a></li>
         {% endif %}
     </ul>
     

@@ -16,8 +16,7 @@ env/
 .venv/
 
 # Archivos de Django
-/static/
-/media/
+
 /migrations/
 
 # Entornos virtuales
